@@ -53,7 +53,7 @@ header {
     position: relative;
     z-index: 10;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 header h1 {
@@ -74,8 +74,10 @@ header p {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    height: calc(100vh - 200px);
+    flex-wrap: wrap;
+    gap: 45px;
+    height: calc(100vh - 220px);
+    padding: 20px;
 }
 
 /* CARD */
@@ -99,13 +101,13 @@ header p {
     box-shadow: 0 0 90px rgba(0,255,255,1);
 }
 
-/* MAIN CARD BOOST */
+/* MAIN CARD */
 .main-card {
     border-color: #00ffee;
-    box-shadow: 0 0 50px rgba(0,255,255,0.8);
+    box-shadow: 0 0 60px rgba(0,255,255,0.9);
 }
 
-/* FLOATING */
+/* FLOAT */
 @keyframes float {
     0%,100% { transform: translateY(0); }
     50% { transform: translateY(-14px); }
@@ -128,7 +130,7 @@ header p {
     to { transform: rotate(360deg); }
 }
 
-/* GITHUB LOGO */
+/* LOGO */
 .project-card img {
     width: 85px;
     margin-top: 60px;
@@ -160,16 +162,18 @@ footer {
     position: relative;
     z-index: 10;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     opacity: 0.6;
 }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+    body {
+        overflow-y: auto;
+    }
+
     .container {
-        flex-direction: column;
         height: auto;
         margin-top: 40px;
-        gap: 35px;
     }
 }
