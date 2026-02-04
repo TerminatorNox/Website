@@ -1,119 +1,175 @@
-/* Reset */
+/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Segoe UI", monospace;
 }
 
-/* Body */
+/* BODY */
 body {
     width: 100vw;
     height: 100vh;
     background: #050b12;
+    color: cyan;
     overflow: hidden;
 }
 
-/* Cyber Animated Background */
+/* CYBER GRID BACKGROUND */
 .cyber-bg {
-    position: absolute;
+    position: fixed;
     width: 200%;
     height: 200%;
     background:
-        linear-gradient(90deg, rgba(0,255,255,0.1) 1px, transparent 1px),
-        linear-gradient(rgba(0,255,255,0.1) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: gridMove 20s linear infinite;
-    filter: drop-shadow(0 0 20px cyan);
+        linear-gradient(90deg, rgba(0,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(rgba(0,255,255,0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: moveGrid 25s linear infinite;
+    filter: drop-shadow(0 0 30px cyan);
 }
 
-@keyframes gridMove {
-    from {
-        transform: translate(0,0);
-    }
-    to {
-        transform: translate(-50px,-50px);
-    }
+@keyframes moveGrid {
+    from { transform: translate(0,0); }
+    to { transform: translate(-60px,-60px); }
 }
 
-/* Container */
+/* SCANLINES */
+.scanlines {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.03),
+        rgba(255,255,255,0.03) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+}
+
+/* HEADER */
+header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-top: 40px;
+}
+
+header h1 {
+    font-size: 32px;
+    letter-spacing: 4px;
+    text-shadow: 0 0 20px cyan;
+}
+
+header p {
+    margin-top: 8px;
+    opacity: 0.8;
+}
+
+/* CONTAINER */
 .container {
     position: relative;
     z-index: 10;
-    width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 50px;
+    height: calc(100vh - 200px);
 }
 
-/* GitHub Card */
-.github-card {
+/* CARD */
+.project-card {
     position: relative;
     width: 260px;
-    height: 260px;
-    background: rgba(0, 255, 255, 0.05);
+    height: 280px;
+    background: rgba(0,255,255,0.05);
     border: 2px solid cyan;
     border-radius: 20px;
     text-align: center;
-    color: cyan;
     text-decoration: none;
+    color: cyan;
     box-shadow: 0 0 30px rgba(0,255,255,0.4);
-    transition: transform 0.3s, box-shadow 0.3s;
+    animation: float 4s ease-in-out infinite;
+    transition: 0.4s;
 }
 
-.github-card:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 60px rgba(0,255,255,0.9);
+.project-card:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 90px rgba(0,255,255,1);
 }
 
-/* Rotating Ring */
+/* MAIN CARD BOOST */
+.main-card {
+    border-color: #00ffee;
+    box-shadow: 0 0 50px rgba(0,255,255,0.8);
+}
+
+/* FLOATING */
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+}
+
+/* ROTATING RING */
 .ring {
     position: absolute;
-    top: -15px;
-    left: -15px;
-    width: 290px;
-    height: 290px;
+    top: -18px;
+    left: -18px;
+    width: 296px;
+    height: 296px;
     border-radius: 50%;
     border: 2px dashed cyan;
-    animation: rotate 8s linear infinite;
+    animation: spin 9s linear infinite;
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* GitHub Logo */
-.github-card img {
-    width: 80px;
-    margin-top: 50px;
-    filter: invert(1) drop-shadow(0 0 10px cyan);
+/* GITHUB LOGO */
+.project-card img {
+    width: 85px;
+    margin-top: 60px;
+    filter: invert(1) drop-shadow(0 0 15px cyan);
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0%,100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
 }
 
-/* Text */
-.github-card h2 {
+/* TEXT */
+.project-card h2 {
     margin-top: 20px;
+    font-size: 20px;
     letter-spacing: 2px;
-    font-size: 18px;
 }
 
-.github-card p {
-    margin-top: 5px;
+.project-card span {
+    display: block;
+    margin-top: 6px;
     font-size: 14px;
-    opacity: 0.8;
+    opacity: 0.85;
+}
+
+/* FOOTER */
+footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        margin-top: 40px;
+        gap: 35px;
+    }
 }
