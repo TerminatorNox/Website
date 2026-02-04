@@ -1,0 +1,119 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Body */
+body {
+    width: 100vw;
+    height: 100vh;
+    background: #050b12;
+    overflow: hidden;
+}
+
+/* Cyber Animated Background */
+.cyber-bg {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background:
+        linear-gradient(90deg, rgba(0,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(rgba(0,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+    filter: drop-shadow(0 0 20px cyan);
+}
+
+@keyframes gridMove {
+    from {
+        transform: translate(0,0);
+    }
+    to {
+        transform: translate(-50px,-50px);
+    }
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* GitHub Card */
+.github-card {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    background: rgba(0, 255, 255, 0.05);
+    border: 2px solid cyan;
+    border-radius: 20px;
+    text-align: center;
+    color: cyan;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(0,255,255,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.github-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 60px rgba(0,255,255,0.9);
+}
+
+/* Rotating Ring */
+.ring {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 290px;
+    height: 290px;
+    border-radius: 50%;
+    border: 2px dashed cyan;
+    animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* GitHub Logo */
+.github-card img {
+    width: 80px;
+    margin-top: 50px;
+    filter: invert(1) drop-shadow(0 0 10px cyan);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%,100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Text */
+.github-card h2 {
+    margin-top: 20px;
+    letter-spacing: 2px;
+    font-size: 18px;
+}
+
+.github-card p {
+    margin-top: 5px;
+    font-size: 14px;
+    opacity: 0.8;
+}
